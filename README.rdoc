@@ -8,6 +8,8 @@
 
 A very simple, but fast (native) PBKDF2-HMAC-SHA256 ruby gem based on Colin Percival's C implementation.
 
+This gem is mostly useful for Ruby installations that have been compiled against an OpenSSL version earlier than 0.9.9, which will be lacking PBKDF2 compliant function (i.e., OpenSSL::PKCS5.pbkdf2_hmac).
+
 == Limitation
 
 SHA256 is the only available Hash function.
