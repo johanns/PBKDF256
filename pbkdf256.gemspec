@@ -4,9 +4,9 @@ require File.expand_path('../lib/pbkdf256/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.name          = "pbkdf256"
-  gem.version       = Pbkdf256::VERSION
-  gem.summary       = %q{TO-DO: Summary}
-  gem.description   = %q{TO-DO: Description}
+  gem.version       = PBKDF256::VERSION
+  gem.summary       = %q{A native PBKDF2-HMAC-SHA256 Ruby gem.}
+  gem.description   = %q{A very simple, but fast (native) PBKDF2-HMAC-SHA256 ruby gem based on Colin Percival's C implementation.}
   gem.license       = "MIT"
   gem.authors       = ["Johanns Gregorian"]
   gem.email         = "io+pbkdf256@jsani.com"

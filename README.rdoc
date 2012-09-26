@@ -3,23 +3,52 @@
 * {Homepage}[https://github.com/johanns/PBKDF256#readme]
 * {Issues}[https://github.com/johanns/PBKDF256/issues]
 * {Documentation}[http://rubydoc.info/gems/PBKDF256/frames]
-* {Email}[mailto:io.johannsg+git at gmail.com]
 
 == Description
 
-TODO: Description
+A very simple, but fast (native) PBKDF2-HMAC-SHA256 ruby gem based on Colin Percival's C implementation.
 
-== Features
+== Limitation
+
+SHA256 is the only available Hash function.
+
+== Benchmark
+
+Performance comparison of {OpenSSL}[http://rubydoc.info/stdlib/openssl/], PBKDF256, and {PBKDF2-ruby}[http://rubydoc.info/gems/pbkdf2/] (Ruby) implementations.
+
+PBKDF2("pleaseletmein", "SodiumChloride", 2000, 64):
+
+                   user     system      total        real
+  OpenSSL:     0.010000   0.000000   0.010000 (  0.015129)
+  PBKDF256:    0.020000   0.000000   0.020000 (  0.046734)
+  PBKDF2-ruby: 0.140000   0.000000   0.140000 (  0.153980)
+
+PBKDF2("pleaseletmein", "SodiumChloride", 100000, 64):
+
+                   user     system      total        real
+  OpenSSL:     0.760000   0.020000   0.780000 (  1.452442)
+  PBKDF256:    0.920000   0.020000   0.940000 (  1.537676)
+  PBKDF2-ruby: 7.030000   0.150000   7.180000 ( 11.195839)
+
+* Smaller is better
 
 == Examples
 
   require 'pbkdf256'
+  require 'openssl'
+
+  salt = OpenSSL::Random.random_bytes(16)
+  PBKDF256.pbkdf2_sha256("p@ssw0rd", salt, 2000, 32)
 
 == Requirements
 
+Ruby, and native build environment.
+
+Tested with Ruby 1.9.x on Mac OS X (10.8.2), and Ubuntu 12.04.
+
 == Install
 
-  $ gem install PBKDF256
+  $ gem install pbkdf256
 
 == Copyright
 
