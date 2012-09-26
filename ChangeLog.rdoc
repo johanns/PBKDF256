@@ -2,7 +2,7 @@
 
 * Initial release
 
-=== 0.1.1 / 2012-09-26
+=== 0.1.2 / 2012-09-26
 
 * ISO C90 compatibility
 
