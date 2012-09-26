@@ -1,3 +1,4 @@
+require 'benchmark'
 require 'openssl'
 require 'pbkdf2'
 require 'pbkdf256'

@@ -30,7 +30,7 @@ m_pbkdf2_sha256(VALUE self, VALUE passwd, VALUE salt, VALUE iter, VALUE key_len)
   return s;
 }
 
-void Init_pbkdf256()
+void Init_pbkdf256_n()
 {
   mPBKDF256 = rb_define_module("PBKDF256");
 
