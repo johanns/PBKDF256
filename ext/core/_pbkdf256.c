@@ -2,8 +2,6 @@
 
 #include "sha256.h"
 
-#define KEYLENMAX 137438953440
-
 static VALUE mPBKDF256;
 
 /* @overload pbkdf2_sha256(passwd, salt, iter, key_len)
@@ -16,11 +14,14 @@ static VALUE mPBKDF256;
  * @return [String] Computed derived key
 */
 static VALUE
-m_pbkdf2_sha256(VALUE self, VALUE passwd, VALUE salt, VALUE iter, VALUE key_len)
+m_pbkdf2_hmac_sha256(VALUE self, VALUE passwd, VALUE salt, VALUE iter, VALUE key_len)
 {
-  size_t dk_buff_len = NUM2UINT(key_len);
-  VALUE s;
+  StringValue(passwd);
+  StringValue(salt);
   
+  size_t dk_buff_len = NUM2UINT(key_len);
+  
+  VALUE s;
   s = rb_str_new(0, dk_buff_len);
 
   s_PBKDF2_SHA256((const uint8_t *) RSTRING_PTR(passwd), RSTRING_LEN(passwd), 
@@ -34,5 +35,5 @@ void Init_pbkdf256_n()
 {
   mPBKDF256 = rb_define_module("PBKDF256");
 
-  rb_define_module_function(mPBKDF256, "pbkdf2_sha256", m_pbkdf2_sha256, 4);
+  rb_define_module_function(mPBKDF256, "hmac_sha256", m_pbkdf2_hmac_sha256, 4);
 }

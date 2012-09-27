@@ -34,23 +34,32 @@ PBKDF2("pleaseletmein", "SodiumChloride", 100000, 64):
 
 * Smaller is better
 
+== Install
+
+  $ gem install pbkdf256
+
 == Examples
 
   require 'pbkdf256'
   require 'openssl'
 
   salt = OpenSSL::Random.random_bytes(16)
-  PBKDF256.pbkdf2_sha256("p@ssw0rd", salt, 2000, 32)
+  # => "\x14~\xFC\xF7\xF4\xA2\xF7\xF7\x93H5\xF9nX\xB6\xA5"
+  
+  PBKDF256.dk("p@ssw0rd", salt, 2000, 32)
+  # => "\xA4\xFF\x83*k\x820#=\x02\x0F\xD1\xE8,\x85K\xAA\x0F\x16{\xE0\xDD\x14\xA2i\x86`\xD3{\xF5^/"
+
+  PBKDF256.pbkdf2_sha256("M0$terM@gnet", salt, 1353, 16)
+  # => "\x80\x80.\x87SC\x96\b\x8F\x9F\xB4\xBD\xAF\x1E\x932"
+
+  PBKDF256.hmac_sha256 "The Last Samurai", salt, 1, 16 
+  # => "C<&\x8F\xB2(\x8D\xD8\x82\xEA\xB6l\xE5]O\b"
 
 == Requirements
 
-Ruby, and native build environment.
+Ruby, and native build environment (GCC 4.x).
 
 Tested with Ruby 1.9.x on Mac OS X (10.8.2), and Ubuntu 12.04.
-
-== Install
-
-  $ gem install pbkdf256
 
 == Copyright
 
