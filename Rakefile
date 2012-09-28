@@ -25,7 +25,7 @@ rescue LoadError => e
 end
 
 task :test    => :spec
-task :default => :spec
+task :default => [:compile, :spec]
 
 begin
   gem 'yard', '~> 0.8'
@@ -38,3 +38,19 @@ rescue LoadError => e
   end
 end
 task :doc => :yard
+
+begin
+  gem 'rake-compiler'
+  require 'rake/extensiontask'
+
+  Rake::ExtensionTask.new do |ext|
+    ext.name = 'pbkdf256_n'                # indicate the name of the extension.
+    ext.ext_dir = 'ext/core'         # search for 'hello_world' inside it.
+    ext.tmp_dir = 'tmp'                     # temporary folder used during compilation.
+    ext.source_pattern = "*.{c,cpp}"        # monitor file changes to allow simple rebuild.
+  end
+rescue LoadError => e
+  task :compile do
+    abort "Please run `gem install rake-compiler` to install Rake-Compiler."
+  end
+end
