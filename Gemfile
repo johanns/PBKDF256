@@ -1,4 +1,3 @@
-gem 'rubygems-tasks'
-gem 'rake'
-gem 'rspec'
-gem 'yard'
+source "http://rubygems.org"
+
+gemspec
