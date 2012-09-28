@@ -1,5 +1,6 @@
 = PBKDF256
 
+* [![Build Status](https://secure.travis-ci.org/johanns/PBKDF256.png)](http://travis-ci.org/johanns/PBKDF256)
 * {Homepage}[https://github.com/johanns/PBKDF256#readme]
 * {Issues}[https://github.com/johanns/PBKDF256/issues]
 * {Documentation}[http://rubydoc.info/gems/PBKDF256/frames]
