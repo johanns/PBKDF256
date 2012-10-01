@@ -44,10 +44,10 @@ begin
   require 'rake/extensiontask'
 
   Rake::ExtensionTask.new do |ext|
-    ext.name = 'pbkdf256_n'                # indicate the name of the extension.
-    ext.ext_dir = 'ext/core'         # search for 'hello_world' inside it.
-    ext.tmp_dir = 'tmp'                     # temporary folder used during compilation.
-    ext.source_pattern = "*.{c,cpp}"        # monitor file changes to allow simple rebuild.
+    ext.name = 'pbkdf256_n'
+    ext.ext_dir = 'ext/core'
+    ext.tmp_dir = 'tmp'
+    ext.source_pattern = "*.{c,cpp}"
   end
 rescue LoadError => e
   task :compile do

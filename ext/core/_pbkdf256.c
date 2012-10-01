@@ -4,7 +4,7 @@
 
 static VALUE mPBKDF256;
 
-/* @overload pbkdf2_sha256(passwd, salt, iter, key_len)
+/* @overload hmac_sha256(passwd, salt, iter, key_len)
  * 
  * @param passwd  [String] Passphrase used to compute the derived key.
  * @param salt    [String] A series of random bits to help prevent 'rainbow table'/pre-computed attacks.
